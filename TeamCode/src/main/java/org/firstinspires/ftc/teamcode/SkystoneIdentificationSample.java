@@ -27,14 +27,13 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.robotcontroller.external.samples;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
-import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.matrices.VectorF;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
@@ -84,8 +83,7 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
 
 
 @TeleOp(name="SKYSTONE Vuforia Nav", group ="Concept")
-@Disabled
-public class ConceptVuforiaSkyStoneNavigation extends LinearOpMode {
+public class SkystoneIdentificationSample extends LinearOpMode {
 
     // IMPORTANT:  For Phone Camera, set 1) the camera source and 2) the orientation, based on how your phone is mounted:
     // 1) Camera Source.  Valid choices are:  BACK (behind screen) or FRONT (selfie side)
@@ -109,7 +107,7 @@ public class ConceptVuforiaSkyStoneNavigation extends LinearOpMode {
      * and paste it in to your code on the next line, between the double quotes.
      */
     private static final String VUFORIA_KEY =
-            " -- YOUR NEW VUFORIA KEY GOES HERE  --- ";
+            "Ac4lb5P/////AAABmbo8GW9hJEppr7tHRMGb4U5xOzGsd2STdhdjuSWjcYL7v3kJc/f3UUGk6b/6As3neIJrFVvd88/bnMhiw3fMtjdzpmln7hw9VAIHuKKFxfJqcHotb+Ftsf5SXAk7r2cx2+ZnT6ZCn3sQW+eFEZJ0UVhMgeozfylangJCsOj29AO89AHKnVWtnnWyGNSoTtUQtWnpJwTEpbVKZZmnzrB/2o/W2d+Niq55Gg7Iz+hrIuR25WZlWWWtrzmtC7UpI3ZDc/vLFnTGAz25gweJWCiFfwRxtUWIQUJAZdTgF+SxiilcK8E4xIyllROwPLDEIRoHYwFeLGeEY4hrk+bmeRp+JQ7LnyI87tL2x5kpYrtj0A55";
 
     // Since ImageTarget trackables use mm to specifiy their dimensions, we must use mm for all the physical dimension.
     // We will define some constants and conversions here
