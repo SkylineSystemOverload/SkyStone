@@ -324,6 +324,11 @@ public class SkystoneIdentificationSample extends LinearOpMode {
             for (VuforiaTrackable trackable : allTrackables) {
                 if (((VuforiaTrackableDefaultListener)trackable.getListener()).isVisible()) {
                     telemetry.addData("Visible Target", trackable.getName());
+
+                    if(trackable.getName().equals("Stone Target")) {
+                        telemetry.addLine("Stone Target Is Visible");
+                    }
+
                     targetVisible = true;
 
                     // getUpdatedRobotLocation() will return null if no new information is available since
