@@ -27,8 +27,8 @@ public class RobotHardware {
     public Servo servo8;
 
     //INSTANTIATE SENSORS
-    public GyroSensor gyroSensor;
-    public ColorSensor colorSensor;
+    //public GyroSensor gyroSensor;
+    //public ColorSensor colorSensor;
 
     //CREATE THE HARDWARE MAP
     HardwareMap hardwareMap;
@@ -54,8 +54,8 @@ public class RobotHardware {
         servo8 = hardwareMap.get(Servo.class, "servo8");
 
         //DEFINE SENSORS
-        gyroSensor = hardwareMap.get(GyroSensor.class, "gyroSensor");
-        colorSensor = hardwareMap.get(ColorSensor.class, "colorSensor");
+        //gyroSensor = hardwareMap.get(GyroSensor.class, "gyroSensor");
+        //colorSensor = hardwareMap.get(ColorSensor.class, "colorSensor");
 
         //SET MOTOR POWERS
         motor1.setPower(0);
@@ -96,7 +96,7 @@ public class RobotHardware {
         //SET SERVO POSITION
 
         //CALIBRATE SENSORS
-        gyroSensor.calibrate();
+        //gyroSensor.calibrate();
 
     }
 }
