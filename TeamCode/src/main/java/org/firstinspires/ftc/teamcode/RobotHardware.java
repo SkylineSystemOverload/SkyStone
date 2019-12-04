@@ -25,6 +25,8 @@ public class RobotHardware {
     public Servo servo6;
     public Servo servo7;
     public Servo servo8;
+    public Servo servo9;
+    public Servo servo10;
 
     //INSTANTIATE SENSORS
     //public GyroSensor gyroSensor;
@@ -52,6 +54,8 @@ public class RobotHardware {
         servo6 = hardwareMap.get(Servo.class, "servo6");
         servo7 = hardwareMap.get(Servo.class, "servo7");
         servo8 = hardwareMap.get(Servo.class, "servo8");
+        servo9 = hardwareMap.get(Servo.class, "servo9");
+        servo10 = hardwareMap.get(Servo.class, "servo10");
 
         //DEFINE SENSORS
         //gyroSensor = hardwareMap.get(GyroSensor.class, "gyroSensor");
