@@ -342,11 +342,24 @@ public class SkystoneIdentificationSample extends LinearOpMode {
             }
 
             // Provide feedback as to where the robot is located (if we know).
+            String positionSkystone = "";
             if (targetVisible) {
                 // express position (translation) of robot in inches.
                 VectorF translation = lastLocation.getTranslation();
                 telemetry.addData("Pos (in)", "{X, Y, Z} = %.1f, %.1f, %.1f",
                         translation.get(0) / mmPerInch, translation.get(1) / mmPerInch, translation.get(2) / mmPerInch);
+
+                double yPosition = translation.get(1);
+
+                if (yPosition < 5.9 * mmPerInch) {
+                    positionSkystone = "left";
+                }
+                else if (yPosition > 10.6 * mmPerInch){
+                    positionSkystone = "right";
+                }
+                else {
+                    positionSkystone = "center";
+                }
 
                 // express the rotation of the robot in degrees.
                 Orientation rotation = Orientation.getOrientation(lastLocation, EXTRINSIC, XYZ, DEGREES);
@@ -355,6 +368,7 @@ public class SkystoneIdentificationSample extends LinearOpMode {
             else {
                 telemetry.addData("Visible Target", "none");
             }
+            telemetry.addData("SkyStone Position", positionSkystone);
             telemetry.update();
         }
 
