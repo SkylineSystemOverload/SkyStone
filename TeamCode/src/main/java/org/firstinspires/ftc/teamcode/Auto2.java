@@ -21,8 +21,9 @@ public class Auto2 extends LinearOpMode {
         robot.init(hardwareMap);
 
         waitForStart();
+        double rev = 1120
 
-        DriveForwardDistance(50, 1110);
+        DriveForwardDistance(1, 1120);
 
 
     }
