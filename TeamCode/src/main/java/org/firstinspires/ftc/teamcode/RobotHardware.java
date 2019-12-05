@@ -28,6 +28,8 @@ public class RobotHardware {
     public Servo servo8;
     public Servo servo9;
     public Servo servo10;
+    public Servo servo11;
+    public Servo servo12;
 
     //INSTANTIATE SENSORS
     public BNO055IMU imu;
@@ -58,6 +60,8 @@ public class RobotHardware {
         servo8 = hardwareMap.get(Servo.class, "servo8");
         servo9 = hardwareMap.get(Servo.class, "servo9");
         servo10 = hardwareMap.get(Servo.class, "servo10");
+        servo11 = hardwareMap.get(Servo.class, "servo11");
+        servo12 = hardwareMap.get(Servo.class, "servo12");
 
 
         //DEFINE SENSORS
