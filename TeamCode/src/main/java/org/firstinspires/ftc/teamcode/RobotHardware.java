@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -29,6 +30,7 @@ public class RobotHardware {
     public Servo servo10;
 
     //INSTANTIATE SENSORS
+    public BNO055IMU imu;
     //public GyroSensor gyroSensor;
     //public ColorSensor colorSensor;
 
@@ -57,7 +59,9 @@ public class RobotHardware {
         servo9 = hardwareMap.get(Servo.class, "servo9");
         servo10 = hardwareMap.get(Servo.class, "servo10");
 
+
         //DEFINE SENSORS
+        imu = hardwareMap.get(BNO055IMU.class, "imu");
         //gyroSensor = hardwareMap.get(GyroSensor.class, "gyroSensor");
         //colorSensor = hardwareMap.get(ColorSensor.class, "colorSensor");
 
