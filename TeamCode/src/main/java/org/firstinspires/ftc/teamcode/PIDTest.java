@@ -23,9 +23,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-@Autonomous(name="Drive Avoid PID 2", group="Exercises")
+@Autonomous(name="PID Test", group="Test")
 //@Disabled
-public class DriveAvoidPid2 extends LinearOpMode
+public class PIDTest extends LinearOpMode
 {
     RobotHardware robot = new RobotHardware();
 
