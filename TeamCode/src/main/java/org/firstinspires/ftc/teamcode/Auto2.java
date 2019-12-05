@@ -23,7 +23,7 @@ public class Auto2 extends LinearOpMode {
         waitForStart();
         int rev = 1120;
 
-        DriveForwardDistance(1, rev);
+        DriveForwardDistance(1, 1120);
 
 
     }

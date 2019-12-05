@@ -15,8 +15,9 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.TouchSensor;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
@@ -24,16 +25,16 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 @Autonomous(name="PID Test", group="Test")
-//@Disabled
+@Disabled
 public class PIDTest extends LinearOpMode
 {
     RobotHardware robot = new RobotHardware();
 
-    TouchSensor             touch;
+    //TouchSensor             touch;
     Orientation             lastAngles = new Orientation();
     double                  globalAngle, power = .30, correction, rotation;
     boolean                 aButton, bButton, touched;
-    PIDHardware          pidRotate, pidDrive;
+    PIDHardware          pidRotate, pidDrive; //calls upon PIDHardware class (not an org.first library) and defines 2 variables
 
     // called when init button is  pressed.
     @Override
@@ -42,7 +43,7 @@ public class PIDTest extends LinearOpMode
         robot.init(hardwareMap);
 
         // get a reference to REV Touch sensor.
-        touch = hardwareMap.touchSensor.get("touch_sensor");
+        //touch = hardwareMap.touchSensor.get("touch_sensor");
 
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
 
@@ -54,7 +55,6 @@ public class PIDTest extends LinearOpMode
         // Retrieve and initialize the IMU. We expect the IMU to be attached to an I2C port
         // on a Core Device Interface Module, configured to be a sensor of type "AdaFruit IMU",
         // and named "imu".
-        robot.imu = hardwareMap.get(BNO055IMU.class, "imu");
 
         robot.imu.initialize(parameters);
 
@@ -119,9 +119,9 @@ public class PIDTest extends LinearOpMode
 
             aButton = gamepad1.a;
             bButton = gamepad1.b;
-            touched = touch.isPressed();
+            //touched = touch.isPressed();
 
-            if (touched || aButton || bButton)
+            if (/*touched || */aButton || bButton)
             {
                 // backup.
                 robot.motor1.setPower(-power);
@@ -134,7 +134,7 @@ public class PIDTest extends LinearOpMode
                 robot.motor2.setPower(0);
 
                 // turn 90 degrees right.
-                if (touched || aButton) rotate(-90, power);
+                if (/*touched || */aButton) rotate(-90, power);
 
                 // turn 90 degrees left.
                 if (bButton) rotate(90, power);
