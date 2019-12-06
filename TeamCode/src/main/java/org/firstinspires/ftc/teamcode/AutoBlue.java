@@ -43,6 +43,12 @@ public class AutoBlue extends LinearOpMode {
         robot.motor4.setPower(-.5);
         sleep(800);
 
+        robot.motor1.setPower(0);
+        robot.motor2.setPower(0);
+        robot.motor3.setPower(0);
+        robot.motor4.setPower(0);
+        sleep(300);
+
         //drive forwards
         robot.motor1.setPower(.5);
         robot.motor2.setPower(.5);
@@ -67,6 +73,7 @@ public class AutoBlue extends LinearOpMode {
         sleep(700);
         //stop
         robot.motor5.setPower(0);
+        sleep(300);
 
         //drive backwards
         robot.motor1.setPower(-.5);

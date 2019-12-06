@@ -35,10 +35,7 @@ public class AutoRed extends LinearOpMode {
         robot.motor5.setPower(0);
 
         //strafe right
-        robot.motor1.setPower(.5);
-        robot.motor2.setPower(-.5);
-        robot.motor3.setPower(-.5);
-        robot.motor4.setPower(.5);
+        StrafeRight(.7);
         sleep(800);
 
         //drive forwards
@@ -99,10 +96,7 @@ public class AutoRed extends LinearOpMode {
         robot.motor5.setPower(0);
 
         //strafe left
-        robot.motor1.setPower(-.5);
-        robot.motor2.setPower(.5);
-        robot.motor3.setPower(.5);
-        robot.motor4.setPower(-.5);
+        StrafeLeft(.7);
         sleep(2300);
 
         //stop
@@ -118,10 +112,7 @@ public class AutoRed extends LinearOpMode {
         sleep(500);
 
         //strafe right
-        robot.motor1.setPower(.5);
-        robot.motor2.setPower(-.5);
-        robot.motor3.setPower(-.5);
-        robot.motor4.setPower(.5);
+        StrafeRight(.7);
         sleep(2300);
 
         //stop
@@ -147,10 +138,7 @@ public class AutoRed extends LinearOpMode {
         sleep(500);
 
         //strafe left
-        robot.motor1.setPower(-.7);
-        robot.motor2.setPower(.7);
-        robot.motor3.setPower(.7);
-        robot.motor4.setPower(-.7);
+        StrafeLeft(.7);
         sleep(2000);
 
         //stop
@@ -166,10 +154,7 @@ public class AutoRed extends LinearOpMode {
         sleep(500);
 
         //strafe right
-        robot.motor1.setPower(-.5);
-        robot.motor2.setPower(.5);
-        robot.motor3.setPower(.5);
-        robot.motor4.setPower(-.5);
+        StrafeRight(.7);
         sleep(1500);
 
         //stop
@@ -198,8 +183,22 @@ public class AutoRed extends LinearOpMode {
     private void TurnRight(double power) {
         TurnLeft(-power);
     }
+
     private void StopDriving() {
         DriveForward(0);
+    }
+
+    public void StrafeLeft(double power) {
+        robot.motor1.setPower(power);
+        robot.motor2.setPower(-power);
+        robot.motor3.setPower(-power);
+        robot.motor4.setPower(power);
+    }
+    public void StrafeRight(double power){
+        robot.motor1.setPower(-power);
+        robot.motor2.setPower(power);
+        robot.motor3.setPower(power);
+        robot.motor4.setPower(-power);
     }
 
 }
