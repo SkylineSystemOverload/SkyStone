@@ -46,7 +46,7 @@ public class DriveAvoidImu extends LinearOpMode
         parameters.mode                = BNO055IMU.SensorMode.IMU;
         parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
         parameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
-        parameters.loggingEnabled      = false;
+        parameters.loggingEnabled      = true;
 
 
         robot.imu.initialize(parameters);
@@ -86,7 +86,7 @@ public class DriveAvoidImu extends LinearOpMode
             telemetry.addData("3 correction", correction);
             telemetry.update();
 
-            robot.motor1.setPower(power + correction); //test
+            robot.motor1.setPower(power - correction); //test
             robot.motor2.setPower(power + correction);
 
             // We record the sensor values because we will test them in more than
