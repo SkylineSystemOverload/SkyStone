@@ -37,23 +37,14 @@ public class AutoBlue extends LinearOpMode {
         robot.motor5.setPower(0);
 
         //strafe left
-        robot.motor1.setPower(-.5);
-        robot.motor2.setPower(.5);
-        robot.motor3.setPower(.5);
-        robot.motor4.setPower(-.5);
+        StrafeLeft(.7);
         sleep(800);
 
-        robot.motor1.setPower(0);
-        robot.motor2.setPower(0);
-        robot.motor3.setPower(0);
-        robot.motor4.setPower(0);
+        StopDriving();
         sleep(300);
 
         //drive forwards
-        robot.motor1.setPower(.5);
-        robot.motor2.setPower(.5);
-        robot.motor3.setPower(.5);
-        robot.motor4.setPower(.5);
+        DriveForward(.5);
 
         while (robot.motor1.isBusy() || robot.motor4.isBusy()) {
             telemetry.addData("Path", "Driving");
@@ -62,10 +53,7 @@ public class AutoBlue extends LinearOpMode {
         sleep(1400);
 
         //stop
-        robot.motor1.setPower(0);
-        robot.motor2.setPower(0);
-        robot.motor3.setPower(0);
-        robot.motor4.setPower(0);
+        StopDriving();
         sleep(1000);
 
         //lower arm
@@ -76,17 +64,11 @@ public class AutoBlue extends LinearOpMode {
         sleep(300);
 
         //drive backwards
-        robot.motor1.setPower(-.5);
-        robot.motor2.setPower(-.5);
-        robot.motor3.setPower(-.5);
-        robot.motor4.setPower(-.5);
+        DriveBackward(.5);
         sleep(1300);
 
         //stop
-        robot.motor1.setPower(0);
-        robot.motor2.setPower(0);
-        robot.motor3.setPower(0);
-        robot.motor4.setPower(0);
+        StopDriving();
         sleep(500);
 
         //PLATFORM IS MOVED
@@ -103,17 +85,11 @@ public class AutoBlue extends LinearOpMode {
         robot.motor6.setPower(0);
 
         //drive backwards
-        robot.motor1.setPower(-.5);
-        robot.motor2.setPower(-.5);
-        robot.motor3.setPower(-.5);
-        robot.motor4.setPower(-.5);
+        DriveBackward(.5);
         sleep(700);
 
         //stop
-        robot.motor1.setPower(0);
-        robot.motor2.setPower(0);
-        robot.motor3.setPower(0);
-        robot.motor4.setPower(0);
+        StopDriving();
         sleep(500);
 
         //lower arm
@@ -123,118 +99,108 @@ public class AutoBlue extends LinearOpMode {
         robot.motor5.setPower(0);
 
         //strafe right
-        robot.motor1.setPower(.5);
-        robot.motor2.setPower(-.5);
-        robot.motor3.setPower(-.5);
-        robot.motor4.setPower(.5);
+        StrafeRight(.7);
         sleep(2300);
 
         //stop
-        robot.motor1.setPower(0);
-        robot.motor2.setPower(0);
-        robot.motor3.setPower(0);
-        robot.motor4.setPower(0);
+        StopDriving();
         sleep(500);
 
         //drive forwards
-        robot.motor1.setPower(.5);
-        robot.motor2.setPower(.5);
-        robot.motor3.setPower(.5);
-        robot.motor4.setPower(.5);
+        DriveForward(.5);
         sleep(2000);
 
         //stop
-        robot.motor1.setPower(0);
-        robot.motor2.setPower(0);
-        robot.motor3.setPower(0);
-        robot.motor4.setPower(0);
+        StopDriving();
         sleep(500);
 
         //strafe left
-        robot.motor1.setPower(-.5);
-        robot.motor2.setPower(.5);
-        robot.motor3.setPower(.5);
-        robot.motor4.setPower(-.5);
+        StrafeLeft(.7);
         sleep(2300);
 
         //stop
-        robot.motor1.setPower(0);
-        robot.motor2.setPower(0);
-        robot.motor3.setPower(0);
-        robot.motor4.setPower(0);
+        StopDriving();
         sleep(500);
 
         //drive backwards
-        robot.motor1.setPower(-.5);
-        robot.motor2.setPower(-.5);
-        robot.motor3.setPower(-.5);
-        robot.motor4.setPower(-.5);
+        DriveBackward(.5);
         sleep(1500);
 
         //stop
-        robot.motor1.setPower(0);
-        robot.motor2.setPower(0);
-        robot.motor3.setPower(0);
-        robot.motor4.setPower(0);
+        StopDriving();
         sleep(500);
 
         //PLATFORM IS MOVED TO LOCATION
 
         //drive forwards
-        robot.motor1.setPower(.5);
-        robot.motor2.setPower(.5);
-        robot.motor3.setPower(.5);
-        robot.motor4.setPower(.5);
+        DriveForward(.5);
         sleep(500);
 
         //stop
-        robot.motor1.setPower(0);
-        robot.motor2.setPower(0);
-        robot.motor3.setPower(0);
-        robot.motor4.setPower(0);
+        StopDriving();
         sleep(500);
 
         //strafe right
-        robot.motor1.setPower(.7);
-        robot.motor2.setPower(-.7);
-        robot.motor3.setPower(-.7);
-        robot.motor4.setPower(.7);
+        StrafeRight(.7);
         sleep(2000);
 
         //stop
-        robot.motor1.setPower(0);
-        robot.motor2.setPower(0);
-        robot.motor3.setPower(0);
-        robot.motor4.setPower(0);
+        StopDriving();
         sleep(500);
 
         //drive backwards
-        robot.motor1.setPower(-.5);
-        robot.motor2.setPower(-.5);
-        robot.motor3.setPower(-.5);
-        robot.motor4.setPower(-.5);
+        DriveBackward(.5);
         sleep(2000);
 
         //stop
-        robot.motor1.setPower(0);
-        robot.motor2.setPower(0);
-        robot.motor3.setPower(0);
-        robot.motor4.setPower(0);
+        StopDriving();
         sleep(500);
 
         //strafe right
-        robot.motor1.setPower(.5);
-        robot.motor2.setPower(-.5);
-        robot.motor3.setPower(-.5);
-        robot.motor4.setPower(.5);
+        StrafeRight(.7);
         sleep(1500);
 
         //stop
-        robot.motor1.setPower(0);
-        robot.motor2.setPower(0);
-        robot.motor3.setPower(0);
-        robot.motor4.setPower(0);
+        StopDriving();
         sleep(500);
 
+    }
+    private void DriveForward(double power) {
+        robot.motor1.setPower(power);
+        robot.motor2.setPower(power);
+        robot.motor3.setPower(power);
+        robot.motor4.setPower(power);
+    }
+    private void DriveBackward(double power) {
+        robot.motor1.setPower(-power);
+        robot.motor2.setPower(-power);
+        robot.motor3.setPower(-power);
+        robot.motor4.setPower(-power);
+    }
+    private void TurnLeft(double power) {
+        robot.motor1.setPower(-power);
+        robot.motor2.setPower(power);
+        robot.motor3.setPower(-power);
+        robot.motor4.setPower(power);
+    }
+    private void TurnRight(double power) {
+        TurnLeft(-power);
+    }
+
+    private void StopDriving() {
+        DriveForward(0);
+    }
+
+    public void StrafeLeft(double power) {
+        robot.motor1.setPower(power);
+        robot.motor2.setPower(-power);
+        robot.motor3.setPower(-power);
+        robot.motor4.setPower(power);
+    }
+    public void StrafeRight(double power){
+        robot.motor1.setPower(-power);
+        robot.motor2.setPower(power);
+        robot.motor3.setPower(power);
+        robot.motor4.setPower(-power);
     }
 }
