@@ -33,7 +33,7 @@ public class AutoBlue extends LinearOpMode {
 
         //raise arm
         robot.motor5.setPower(.5);
-        sleep(700);
+        sleep(1000);
         robot.motor5.setPower(0);
 
         //strafe left
@@ -58,7 +58,7 @@ public class AutoBlue extends LinearOpMode {
 
         //lower arm
         robot.motor5.setPower(-.5);
-        sleep(700);
+        sleep(1000);
         //stop
         robot.motor5.setPower(0);
         sleep(300);
