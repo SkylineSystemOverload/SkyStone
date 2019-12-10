@@ -49,12 +49,14 @@ public class DriverControlled extends OpMode{
         boolean G1dpad_left = gamepad1.dpad_left;
         boolean G1dpad_up = gamepad1.dpad_up;
         boolean G1dpad_down = gamepad1.dpad_down;
+        boolean G1rightBumper = gamepad1.right_bumper;
+        boolean G1leftBumper = gamepad1.left_bumper;
 
         //mecanum drive
-        robot.motor2.setPower((G1rightStickY) - (G1rightStickX) - (G1leftStickX));
-        robot.motor4.setPower((G1rightStickY) - (G1rightStickX) + (G1leftStickX));
-        robot.motor1.setPower((G1rightStickY) + (G1rightStickX) + (G1leftStickX));
-        robot.motor3.setPower((G1rightStickY) + (G1rightStickX) - (G1leftStickX));
+        robot.motor2.setPower((G1leftStickY) - (G1rightStickX) - (G1leftStickX));
+        robot.motor4.setPower((G1leftStickY) - (G1rightStickX) + (G1leftStickX));
+        robot.motor1.setPower((G1leftStickY) + (G1rightStickX) + (G1leftStickX));
+        robot.motor3.setPower((G1leftStickY) + (G1rightStickX) - (G1leftStickX));
 
 
         //finger in
@@ -69,45 +71,21 @@ public class DriverControlled extends OpMode{
 
         //arm up
         if (G1LT > 0)
-            robot.motor5.setPower(G1LT);
+            robot.motor5.setPower(-G1LT);
             //arm down
         else if (G1RT > 0)
-            robot.motor5.setPower(-G1RT);
+            robot.motor5.setPower(G1RT);
         else
             robot.motor5.setPower(0);
 
 
-
-       /* //close finger
-       if (G1a == true) {
-          robot.motor7.setPower(1);
-       }
-       //open finger
-       else if (G1b == true) {
-          robot.motor7.setPower(-1);
-       }
-       else {
-          robot.motor7.setPower(0);
-       }
-       */
-
-        robot.servo1.setPosition(0.2);
-        robot.servo2.setPosition(0.3);
-
         telemetry.addData("motor1 Power", robot.motor1.getPower());
-
         telemetry.addData("motor2 Power", robot.motor2.getPower());
-
         telemetry.addData("motor3 Power", robot.motor3.getPower());
-
         telemetry.addData("motor4 Power", robot.motor4.getPower());
-
         telemetry.addData("motor5 Power", robot.motor5.getPower());
-
         telemetry.addData("motor6 Power", robot.motor6.getPower());
-
         telemetry.addData("motor7 Power", robot.motor7.getPower());
-
         telemetry.addData("motor8 Power", robot.motor8.getPower());
     }
 
