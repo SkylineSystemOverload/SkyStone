@@ -86,8 +86,14 @@ public class DriveAvoidImu extends LinearOpMode
             telemetry.addData("3 correction", correction);
             telemetry.update();
 
-            robot.motor1.setPower(power - correction); //test
-            robot.motor2.setPower(power + correction);
+            robot.motor1.setPower(power + correction);
+            robot.motor3.setPower(power + correction);//test
+            robot.motor2.setPower(power - correction);
+            robot.motor4.setPower(power - correction);
+
+            sleep(2500);
+
+            rotate(-90, power);
 
             // We record the sensor values because we will test them in more than
             // one place with time passing between those places. See the lesson on
@@ -120,6 +126,8 @@ public class DriveAvoidImu extends LinearOpMode
         // turn the motors off.
         robot.motor1.setPower(0);
         robot.motor2.setPower(0);
+        robot.motor3.setPower(0);
+        robot.motor4.setPower(0);
     }
 
     /**
@@ -168,7 +176,7 @@ public class DriveAvoidImu extends LinearOpMode
         // The gain value determines how sensitive the correction is to direction changes.
         // You will have to experiment with your robot to get small smooth direction changes
         // to stay on a straight line.
-        double correction, angle, gain = .10;
+        double correction, angle, gain = .05;
 
         angle = getAngle();
 
@@ -198,19 +206,22 @@ public class DriveAvoidImu extends LinearOpMode
 
         if (degrees < 0)
         {   // turn right.
-            leftPower = power;
-            rightPower = -power;
+            leftPower = -power;//test
+            rightPower = +power;
         }
         else if (degrees > 0)
         {   // turn left.
-            leftPower = -power;
-            rightPower = power;
+            leftPower = power;//test
+            rightPower = +power;
         }
         else return;
 
         // set power to rotate.
         robot.motor1.setPower(leftPower);
+        robot.motor3.setPower(leftPower);
         robot.motor2.setPower(rightPower);
+        robot.motor4.setPower(rightPower);
+
 
         // rotate until turn is completed.
         if (degrees < 0)
@@ -226,9 +237,11 @@ public class DriveAvoidImu extends LinearOpMode
         // turn the motors off.
         robot.motor1.setPower(0);
         robot.motor2.setPower(0);
+        robot.motor3.setPower(0);
+        robot.motor4.setPower(0);
 
         // wait for rotation to stop.
-        sleep(1000);
+        sleep(2000);
 
         // reset angle tracking on new heading.
         resetAngle();
