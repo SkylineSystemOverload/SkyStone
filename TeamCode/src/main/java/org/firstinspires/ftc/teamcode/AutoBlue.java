@@ -86,7 +86,7 @@ public class AutoBlue extends LinearOpMode {
 
         //drive backwards
         DriveBackward(.5);
-        sleep(700);
+        sleep(300);
 
         //stop
         StopDriving();
@@ -124,7 +124,7 @@ public class AutoBlue extends LinearOpMode {
 
         //drive backwards
         DriveBackward(.5);
-        sleep(1500);
+        sleep(1000);
 
         //stop
         StopDriving();

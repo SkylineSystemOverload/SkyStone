@@ -83,7 +83,7 @@ public class AutoRed extends LinearOpMode {
 
         //drive backwards
         DriveBackward(-0.5);
-        sleep(700);
+        sleep(300);
 
         //stop
         StopDriving();
@@ -121,7 +121,7 @@ public class AutoRed extends LinearOpMode {
 
         //drive backwards
         DriveBackward(-0.5);
-        sleep(1500);
+        sleep(1000);
 
         //stop
         StopDriving();
