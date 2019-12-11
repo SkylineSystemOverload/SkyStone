@@ -32,7 +32,7 @@ public class PIDTest extends LinearOpMode
 
     //TouchSensor             touch;
     Orientation             lastAngles = new Orientation();
-    double                  globalAngle, power = .30, correction, rotation;
+    double                  globalAngle, power = .50, correction, rotation;
     boolean                 aButton, bButton, touched;
     PIDHardware          pidRotate, pidDrive; //calls upon PIDHardware class (not an org.first library) and defines 2 variables
 
@@ -50,7 +50,7 @@ public class PIDTest extends LinearOpMode
         parameters.mode                = BNO055IMU.SensorMode.IMU;
         parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
         parameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
-        parameters.loggingEnabled      = false;
+        parameters.loggingEnabled      = true;
 
         // Retrieve and initialize the IMU. We expect the IMU to be attached to an I2C port
         // on a Core Device Interface Module, configured to be a sensor of type "AdaFruit IMU",
@@ -109,9 +109,22 @@ public class PIDTest extends LinearOpMode
             telemetry.addData("4 turn rotation", rotation);
             telemetry.update();
 
-            // set power levels.
-            robot.motor1.setPower(power - correction);
-            robot.motor2.setPower(power + correction);
+            StrafeLeft();
+            sleep(800);
+
+            StopDriving();
+            sleep(300);
+
+            DriveForward();
+            sleep(1400);
+
+            StopDriving();
+            sleep(300);
+
+            DriveBackward();
+            sleep(1300);
+
+            rotate(-90, .3);
 
             // We record the sensor values because we will test them in more than
             // one place with time passing between those places. See the lesson on
@@ -144,6 +157,38 @@ public class PIDTest extends LinearOpMode
         // turn the motors off.
         robot.motor1.setPower(0);
         robot.motor2.setPower(0);
+        robot.motor3.setPower(0);
+        robot.motor4.setPower(0);
+    }
+    private void DriveForward() {
+        robot.motor1.setPower(power + correction);
+        robot.motor3.setPower(power + correction);
+        robot.motor2.setPower(power - correction);
+        robot.motor4.setPower(power - correction);
+    }
+    private void DriveBackward() {
+        robot.motor1.setPower(-power + correction);
+        robot.motor3.setPower(-power + correction);
+        robot.motor2.setPower(-power - correction);
+        robot.motor4.setPower(-power - correction);
+    }
+    private void StrafeLeft() {
+        robot.motor1.setPower(power + correction);
+        robot.motor3.setPower(-power + correction);
+        robot.motor2.setPower(-power - correction);
+        robot.motor4.setPower(power - correction);
+    }
+    private void StrafeRight() {
+        robot.motor1.setPower(-power + correction);
+        robot.motor3.setPower(power + correction);
+        robot.motor2.setPower(power - correction);
+        robot.motor4.setPower(-power - correction);
+    }
+    private void StopDriving() {
+        robot.motor1.setPower(0);
+        robot.motor3.setPower(0);
+        robot.motor2.setPower(0);
+        robot.motor4.setPower(0);
     }
 
     /**
@@ -224,29 +269,37 @@ public class PIDTest extends LinearOpMode
             // On right turn we have to get off zero first.
             while (opModeIsActive() && getAngle() == 0)
             {
-                robot.motor1.setPower(power);
-                robot.motor2.setPower(-power);
+                robot.motor1.setPower(-power);
+                robot.motor2.setPower(power);
+                robot.motor3.setPower(-power);
+                robot.motor4.setPower(power);
                 sleep(100);
             }
 
             do
             {
                 power = pidRotate.performPID(getAngle()); // power will be - on right turn.
-                robot.motor1.setPower(-power);
-                robot.motor2.setPower(power);
+                robot.motor1.setPower(power);
+                robot.motor2.setPower(-power);
+                robot.motor3.setPower(power);
+                robot.motor4.setPower(-power);
             } while (opModeIsActive() && !pidRotate.onTarget());
         }
         else    // left turn.
             do
             {
                 power = pidRotate.performPID(getAngle()); // power will be + on left turn.
-                robot.motor1.setPower(-power);
-                robot.motor2.setPower(power);
+                robot.motor1.setPower(power);
+                robot.motor2.setPower(-power);
+                robot.motor3.setPower(power);
+                robot.motor4.setPower(-power);
             } while (opModeIsActive() && !pidRotate.onTarget());
 
         // turn the motors off.
         robot.motor1.setPower(0);
         robot.motor2.setPower(0);
+        robot.motor3.setPower(0);
+        robot.motor4.setPower(0);
 
         rotation = getAngle();
 
