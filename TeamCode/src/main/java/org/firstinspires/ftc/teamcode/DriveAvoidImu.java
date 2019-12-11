@@ -28,7 +28,7 @@ public class DriveAvoidImu extends LinearOpMode
 
     //TouchSensor             touch;
     Orientation             lastAngles = new Orientation();
-    double                  globalAngle, power = .30, correction;
+    double                  globalAngle, power = .50, correction;
     boolean                 aButton, bButton, touched;
 
     // called when init button is  pressed.
@@ -86,14 +86,24 @@ public class DriveAvoidImu extends LinearOpMode
             telemetry.addData("3 correction", correction);
             telemetry.update();
 
-            robot.motor1.setPower(power + correction);
-            robot.motor3.setPower(power + correction);//test
-            robot.motor2.setPower(power - correction);
-            robot.motor4.setPower(power - correction);
+            StrafeLeft();
+            sleep(800);
 
-            sleep(2500);
+            StopDriving();
+            sleep(300);
 
-            rotate(-90, power);
+            DriveForward();
+            sleep(1400);
+
+            StopDriving();
+            sleep(300);
+
+            DriveBackward();
+            sleep(1300);
+
+            rotate(-90, .3);
+
+
 
             // We record the sensor values because we will test them in more than
             // one place with time passing between those places. See the lesson on
@@ -127,6 +137,37 @@ public class DriveAvoidImu extends LinearOpMode
         robot.motor1.setPower(0);
         robot.motor2.setPower(0);
         robot.motor3.setPower(0);
+        robot.motor4.setPower(0);
+    }
+
+    private void DriveForward() {
+        robot.motor1.setPower(power + correction);
+        robot.motor3.setPower(power + correction);
+        robot.motor2.setPower(power - correction);
+        robot.motor4.setPower(power - correction);
+    }
+    private void DriveBackward() {
+        robot.motor1.setPower(-power + correction);
+        robot.motor3.setPower(-power + correction);
+        robot.motor2.setPower(-power - correction);
+        robot.motor4.setPower(-power - correction);
+    }
+    private void StrafeLeft() {
+        robot.motor1.setPower(power + correction);
+        robot.motor3.setPower(-power + correction);
+        robot.motor2.setPower(-power - correction);
+        robot.motor4.setPower(power - correction);
+    }
+    private void StrafeRight() {
+        robot.motor1.setPower(-power + correction);
+        robot.motor3.setPower(power + correction);
+        robot.motor2.setPower(power - correction);
+        robot.motor4.setPower(-power - correction);
+    }
+    private void StopDriving() {
+        robot.motor1.setPower(0);
+        robot.motor3.setPower(0);
+        robot.motor2.setPower(0);
         robot.motor4.setPower(0);
     }
 
@@ -211,7 +252,7 @@ public class DriveAvoidImu extends LinearOpMode
         }
         else if (degrees > 0)
         {   // turn left.
-            leftPower = power;//test
+            leftPower = -power;//test
             rightPower = +power;
         }
         else return;
