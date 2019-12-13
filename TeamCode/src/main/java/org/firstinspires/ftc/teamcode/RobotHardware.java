@@ -104,6 +104,7 @@ public class RobotHardware {
         motor2.setDirection(DcMotor.Direction.REVERSE);
         motor3.setDirection(DcMotor.Direction.FORWARD);
         motor4.setDirection(DcMotor.Direction.REVERSE);
+        motor6.setDirection(DcMotor.Direction.REVERSE);
 
         //SET SERVO POSITION
 
