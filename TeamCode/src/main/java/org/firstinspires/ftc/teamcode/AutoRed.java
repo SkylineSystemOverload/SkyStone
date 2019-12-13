@@ -25,7 +25,7 @@ public class AutoRed extends LinearOpMode {
         waitForStart();
 
         //extend finger
-        robot.motor6.setPower(-.5);
+        robot.motor6.setPower(.5);
         sleep(500);
         robot.motor6.setPower(0);
 
@@ -77,7 +77,7 @@ public class AutoRed extends LinearOpMode {
         robot.motor5.setPower(0);
 
         //retract finger
-        robot.motor6.setPower(.5);
+        robot.motor6.setPower(-.5);
         sleep(500);
         robot.motor6.setPower(0);
 
@@ -188,13 +188,13 @@ public class AutoRed extends LinearOpMode {
         DriveForward(0);
     }
 
-    public void StrafeLeft(double power) {
+    private void StrafeLeft(double power) {
         robot.motor1.setPower(power);
         robot.motor2.setPower(-power);
         robot.motor3.setPower(-power);
         robot.motor4.setPower(power);
     }
-    public void StrafeRight(double power){
+    private void StrafeRight(double power){
         robot.motor1.setPower(-power);
         robot.motor2.setPower(power);
         robot.motor3.setPower(power);

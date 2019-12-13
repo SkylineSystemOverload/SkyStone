@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name="PiersDriverControlled", group="Test")
-
 public class PiersDriverControlled extends OpMode{
 
     // DEFINE robot
@@ -61,20 +60,20 @@ public class PiersDriverControlled extends OpMode{
 
         //finger in
         if (G1leftBumper)
-            robot.motor6.setPower(1);
+            robot.motor6.setPower(-1);
         else if (G1rightBumper)
             //finger out
-            robot.motor6.setPower(-1);
+            robot.motor6.setPower(1);
         else
             robot.motor6.setPower(0);
 
 
         //arm up
         if (G1LT > 0)
-            robot.motor5.setPower(-G1LT);
+            robot.motor5.setPower(G1LT);
             //arm down
         else if (G1RT > 0)
-            robot.motor5.setPower(G1RT);
+            robot.motor5.setPower(-G1RT);
         else
             robot.motor5.setPower(0);
 
