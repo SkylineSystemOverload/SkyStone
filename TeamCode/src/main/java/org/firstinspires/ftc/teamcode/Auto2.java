@@ -28,41 +28,41 @@ public class Auto2 extends LinearOpMode {
 
     }
 
-    public void DriveForward(double power) {
+    private void DriveForward(double power) {
         robot.motor1.setPower(power);
         robot.motor2.setPower(power);
         robot.motor3.setPower(power);
         robot.motor4.setPower(power);
     }
-    public void DriveBackward(double power) {
+    private void DriveBackward(double power) {
         robot.motor1.setPower(-power);
         robot.motor2.setPower(-power);
         robot.motor3.setPower(-power);
         robot.motor4.setPower(-power);
     }
-    public void TurnLeft(double power) {
+    private void TurnLeft(double power) {
         robot.motor1.setPower(-power);
         robot.motor2.setPower(power);
         robot.motor3.setPower(-power);
         robot.motor4.setPower(power);
     }
-    public void TurnRight(double power) {
+    private void TurnRight(double power) {
         TurnLeft(-power);
     }
 
-    public void StrafeLeft(double power) {
+    private void StrafeLeft(double power) {
         robot.motor1.setPower(power);
         robot.motor2.setPower(-power);
         robot.motor3.setPower(-power);
         robot.motor4.setPower(power);
     }
-    public void StrafeRight(double power){
+    private void StrafeRight(double power){
         robot.motor1.setPower(-power);
         robot.motor2.setPower(power);
         robot.motor3.setPower(power);
         robot.motor4.setPower(-power);
         }
-    public void StopDriving() {
+    private void StopDriving() {
         DriveForward(0);
     }
 
