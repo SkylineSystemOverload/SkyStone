@@ -97,21 +97,47 @@ public class DriveAvoidImu extends LinearOpMode
             telemetry.addData("3 correction", correction);
             telemetry.update();
 
-            DriveForward();
+            //raise arm
+            robot.motor5.setPower(.5);
+            sleep(1500);
+            robot.motor5.setPower(0);
+            sleep(300);
 
-            if(System.currentTimeMillis() - setTime > 1400 && !hasRun) {
-                //Will only run after 1.4 seconds, and will only run once
-                hasRun = true;
+            //extend finger
+            robot.motor6.setPower(.5);
+            sleep(500);
+            robot.motor6.setPower(0);
+            sleep(700);
+
+            if(System.currentTimeMillis() - setTime > 1200) {
+                StrafeLeft();
+            }
+            else if(System.currentTimeMillis() - setTime > 2000) {
+                StopDriving();
+            }
+            else if(System.currentTimeMillis() - setTime > 2300) {
+                DriveForward();
+            }
+            else if(System.currentTimeMillis() - setTime > 3700) {
+                StopDriving();
+            }
+            else if(System.currentTimeMillis() - setTime > 4000) {
+                //lower arm
+                robot.motor5.setPower(-.5);
+            }
+            else if(System.currentTimeMillis() - setTime > 5500) {
+                robot.motor5.setPower(0);
+            }
+            else if(System.currentTimeMillis() - setTime > 5800) {
+                DriveBackward();
+            }
+            else if(System.currentTimeMillis() - setTime > 7100) {
+                StopDriving();
+            }
+            else {
                 StopDriving();
             }
             //smartSleep(2);
-
-            else if(System.currentTimeMillis() - setTime > 2400) {
-                DriveBackward();
-            }
-            else if(System.currentTimeMillis() - setTime > 2900) {
-                StopDriving();
-            }
 
                 // We record the sensor values because we will test them in more than
             // one place with time passing between those places. See the lesson on
