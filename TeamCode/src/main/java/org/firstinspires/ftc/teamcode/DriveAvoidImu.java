@@ -13,6 +13,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
@@ -25,11 +26,21 @@ import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
 public class DriveAvoidImu extends LinearOpMode
 {
     RobotHardware robot = new RobotHardware();
+    //private ElapsedTime runtime = new ElapsedTime();
 
     //TouchSensor             touch;
     Orientation             lastAngles = new Orientation();
     double                  globalAngle, power = .50, correction;
     boolean                 aButton, bButton, touched;
+    boolean hasRun = false;
+
+    /*public void smartSleep (double secondsToSleep) {
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < secondsToSleep)) {
+            telemetry.addData("Path", "Leg: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+    }*/
 
     // called when init button is  pressed.
     @Override
@@ -74,7 +85,7 @@ public class DriveAvoidImu extends LinearOpMode
 
         sleep(1000);
 
-        // drive until end of period.
+        long setTime = System.currentTimeMillis();
 
         while (opModeIsActive())
         {
@@ -86,26 +97,23 @@ public class DriveAvoidImu extends LinearOpMode
             telemetry.addData("3 correction", correction);
             telemetry.update();
 
-            StrafeLeft();
-            sleep(800);
-
-            StopDriving();
-            sleep(300);
-
             DriveForward();
-            sleep(1400);
 
-            StopDriving();
-            sleep(300);
+            if(System.currentTimeMillis() - setTime > 1400 && !hasRun) {
+                //Will only run after 1.4 seconds, and will only run once
+                hasRun = true;
+                StopDriving();
+            }
+            //smartSleep(2);
 
-            DriveBackward();
-            sleep(1300);
+            else if(System.currentTimeMillis() - setTime > 2400) {
+                DriveBackward();
+            }
+            else if(System.currentTimeMillis() - setTime > 2900) {
+                StopDriving();
+            }
 
-            rotate(-90, .3);
-
-
-
-            // We record the sensor values because we will test them in more than
+                // We record the sensor values because we will test them in more than
             // one place with time passing between those places. See the lesson on
             // Timing Considerations to know why.
 
@@ -134,46 +142,44 @@ public class DriveAvoidImu extends LinearOpMode
         }
 
         // turn the motors off.
-        robot.motor1.setPower(0);
-        robot.motor2.setPower(0);
-        robot.motor3.setPower(0);
-        robot.motor4.setPower(0);
-    }
-
-    private void DriveForward() {
-        robot.motor1.setPower(power + correction);
-        robot.motor3.setPower(power + correction);
-        robot.motor2.setPower(power - correction);
-        robot.motor4.setPower(power - correction);
-    }
-    private void DriveBackward() {
-        robot.motor1.setPower(-power + correction);
-        robot.motor3.setPower(-power + correction);
-        robot.motor2.setPower(-power - correction);
-        robot.motor4.setPower(-power - correction);
-    }
-    private void StrafeLeft() {
-        robot.motor1.setPower(power + correction);
-        robot.motor3.setPower(-power + correction);
-        robot.motor2.setPower(-power - correction);
-        robot.motor4.setPower(power - correction);
-    }
-    private void StrafeRight() {
-        robot.motor1.setPower(-power + correction);
-        robot.motor3.setPower(power + correction);
-        robot.motor2.setPower(power - correction);
-        robot.motor4.setPower(-power - correction);
-    }
-    private void StopDriving() {
-        robot.motor1.setPower(0);
-        robot.motor3.setPower(0);
-        robot.motor2.setPower(0);
-        robot.motor4.setPower(0);
+        StopDriving();
     }
 
     /**
      * Resets the cumulative angle tracking to zero.
      */
+    public void DriveForward() {
+        robot.motor1.setPower(-power + correction);
+        robot.motor3.setPower(-power + correction);//test
+        robot.motor2.setPower(-power - correction);
+        robot.motor4.setPower(-power - correction);
+    }
+    public void DriveBackward() {
+        robot.motor1.setPower(power + correction);
+        robot.motor2.setPower(power + correction);
+        robot.motor3.setPower(power - correction);
+        robot.motor4.setPower(power - correction);
+    }
+    public void StrafeLeft() {
+        robot.motor1.setPower(-power + correction);
+        robot.motor2.setPower(power + correction);
+        robot.motor3.setPower(power - correction);
+        robot.motor4.setPower(-power - correction);
+    }
+    public void StrafeRight() {
+        robot.motor1.setPower(power + correction);
+        robot.motor2.setPower(-power + correction);
+        robot.motor3.setPower(-power - correction);
+        robot.motor4.setPower(power - correction);
+    }
+    public void StopDriving() {
+        robot.motor1.setPower(0);
+        robot.motor2.setPower(0);
+        robot.motor3.setPower(0);
+        robot.motor4.setPower(0);
+    }
+
+
     private void resetAngle()
     {
         lastAngles = robot.imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
@@ -252,8 +258,8 @@ public class DriveAvoidImu extends LinearOpMode
         }
         else if (degrees > 0)
         {   // turn left.
-            leftPower = -power;//test
-            rightPower = +power;
+            leftPower = +power;//test
+            rightPower = -power;
         }
         else return;
 
