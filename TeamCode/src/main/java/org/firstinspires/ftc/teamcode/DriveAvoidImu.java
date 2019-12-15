@@ -109,29 +109,96 @@ public class DriveAvoidImu extends LinearOpMode
             robot.motor6.setPower(0);
             sleep(700);
 
-            if(System.currentTimeMillis() - setTime > 1200) {
+            if(System.currentTimeMillis() - setTime > 3200) {
                 StrafeLeft();
             }
-            else if(System.currentTimeMillis() - setTime > 2000) {
+            else if(System.currentTimeMillis() - setTime > 4000) {
                 StopDriving();
             }
-            else if(System.currentTimeMillis() - setTime > 2300) {
+            else if(System.currentTimeMillis() - setTime > 4300) {
                 DriveForward();
             }
-            else if(System.currentTimeMillis() - setTime > 3700) {
+            else if(System.currentTimeMillis() - setTime > 5700) {
                 StopDriving();
             }
-            else if(System.currentTimeMillis() - setTime > 4000) {
+            else if(System.currentTimeMillis() - setTime > 6000) {
                 //lower arm
                 robot.motor5.setPower(-.5);
             }
-            else if(System.currentTimeMillis() - setTime > 5500) {
+            else if(System.currentTimeMillis() - setTime > 7500) {
                 robot.motor5.setPower(0);
             }
-            else if(System.currentTimeMillis() - setTime > 5800) {
+            else if(System.currentTimeMillis() - setTime > 7800) {
                 DriveBackward();
             }
-            else if(System.currentTimeMillis() - setTime > 7100) {
+            else if(System.currentTimeMillis() - setTime > 8100) {
+                StopDriving();
+        //PLATFORM IS MOVED
+                //raise arm
+                robot.motor5.setPower(.5);
+            }
+            else if(System.currentTimeMillis() > 8800) {
+                robot.motor5.setPower(0);
+                //retract finger
+                robot.motor6.setPower(-.5);
+            }
+            else if(System.currentTimeMillis() > 9300) {
+                robot.motor6.setPower(0);
+                DriveBackward();
+            }
+            else if(System.currentTimeMillis() - setTime > 9600) {
+                StopDriving();
+                //lower arm
+                robot.motor5.setPower(-.5);
+            }
+            else if(System.currentTimeMillis() - setTime > 10300) {
+                robot.motor5.setPower(0);
+                StrafeRight();
+            }
+            else if(System.currentTimeMillis() - setTime > 12600) {
+                StopDriving();
+            }
+            else if(System.currentTimeMillis() - setTime > 13100) {
+                DriveForward();
+            }
+            else if(System.currentTimeMillis() - setTime > 15100) {
+                StopDriving();
+            }
+            else if(System.currentTimeMillis() - setTime > 15600) {
+                StrafeLeft();
+            }
+            else if(System.currentTimeMillis() - setTime > 17900) {
+                StopDriving();
+            }
+            else if(System.currentTimeMillis() - setTime > 18400) {
+                DriveBackward();
+            }
+            else if(System.currentTimeMillis() - setTime > 19400) {
+                StopDriving();
+            }
+        //PLATFORM IS MOVED TO NEW LOCATION
+            else if(System.currentTimeMillis() - setTime > 19900) {
+                DriveForward();
+            }
+            else if(System.currentTimeMillis() - setTime > 20400) {
+                StopDriving();
+            }
+            else if(System.currentTimeMillis() - setTime > 20900) {
+                StrafeRight();
+            }
+            else if(System.currentTimeMillis() - setTime > 22900) {
+                StopDriving();
+            }
+            else if(System.currentTimeMillis() - setTime > 23400) {
+                DriveBackward();
+            }
+            else if(System.currentTimeMillis() - setTime > 25400) {
+                StopDriving();
+            }
+            else if(System.currentTimeMillis() - setTime > 25900) {
+                StrafeRight();
+            }
+            else if(System.currentTimeMillis() - setTime >  27400) {
                 StopDriving();
             }
             else {
