@@ -13,6 +13,8 @@ import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
 
 import java.io.File;
 
+// REMEMBER TO MAKE SURE MOTOR DIRECTIONS ARE THE RIGHT WAY
+
 /**
  * Created by Sarthak on 6/1/2019.
  * Odometry system calibration. Run this OpMode to generate the necessary constants to calculate the robot's global position on the field.
@@ -29,8 +31,8 @@ public class OdometryCalibration extends LinearOpMode {
     BNO055IMU imu;
 
     //Hardware Map Names for drive motors and odometry wheels. THIS WILL CHANGE ON EACH ROBOT, YOU NEED TO UPDATE THESE VALUES ACCORDINGLY
-    String rfName = "rf", rbName = "rb", lfName = "lf", lbName = "lb";
-    String verticalLeftEncoderName = rbName, verticalRightEncoderName = lfName, horizontalEncoderName = rfName;
+    String motor2 = "motor2", motor4 = "motor4", motor1 = "motor1", motor3 = "motor3";
+    String verticalLeftEncoderName = motor4, verticalRightEncoderName = motor1, horizontalEncoderName = motor2;
 
     final double PIVOT_SPEED = 0.5;
 
@@ -48,7 +50,7 @@ public class OdometryCalibration extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         //Initialize hardware map values. PLEASE UPDATE THESE VALUES TO MATCH YOUR CONFIGURATION
-        initHardwareMap(rfName, rbName, lfName, lbName, verticalLeftEncoderName, verticalRightEncoderName, horizontalEncoderName);
+        initHardwareMap(motor2, motor4, motor1, motor3, verticalLeftEncoderName, verticalRightEncoderName, horizontalEncoderName);
 
         //Initialize IMU hardware map value. PLEASE UPDATE THIS VALUE TO MATCH YOUR CONFIGURATION
         imu = hardwareMap.get(BNO055IMU.class, "imu");
@@ -167,9 +169,10 @@ public class OdometryCalibration extends LinearOpMode {
         left_front.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         left_back.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        left_front.setDirection(DcMotorSimple.Direction.REVERSE);
-        right_front.setDirection(DcMotorSimple.Direction.REVERSE);
-        right_back.setDirection(DcMotorSimple.Direction.REVERSE);
+        left_front.setDirection(DcMotor.Direction.FORWARD);
+        right_front.setDirection(DcMotor.Direction.REVERSE);
+        left_back.setDirection(DcMotor.Direction.FORWARD);
+        right_back.setDirection(DcMotor.Direction.REVERSE);
 
 
         telemetry.addData("Status", "Hardware Map Init Complete");
