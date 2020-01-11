@@ -6,9 +6,9 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name="DriverControlled", group="Test")
+@TeleOp(name="DefaultDriverControlled", group="Test")
 
-public class DriverControlled extends OpMode{
+public class DefaultDriverControlled extends OpMode{
 
     // DEFINE robot
     RobotHardware robot = new RobotHardware();
