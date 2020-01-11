@@ -23,7 +23,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
 
 @Autonomous(name="Drive Avoid Imu", group="Test")
-public class DriveAvoidImu extends LinearOpMode
+public class IMUTest extends LinearOpMode
 {
     RobotHardware robot = new RobotHardware();
     //private ElapsedTime runtime = new ElapsedTime();
