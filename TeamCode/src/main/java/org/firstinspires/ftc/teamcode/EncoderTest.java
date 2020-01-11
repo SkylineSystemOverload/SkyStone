@@ -10,8 +10,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 
-@Autonomous(name="Auto2", group="Test")
-public class Auto2 extends LinearOpMode {
+@Autonomous(name="EncoderTest", group="Test")
+public class EncoderTest extends LinearOpMode {
 
     RobotHardware robot = new RobotHardware();
 
